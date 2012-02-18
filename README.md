@@ -1,4 +1,4 @@
-# PHP Metrics CLient
+# PHP Metrics Client
 
 A PHP Client for sending data to [librato metrics][].
 
@@ -19,7 +19,7 @@ $client = new Client('user@example.org', '...');
 $client->post('/metrics', array(
   'gauges' => array(
     array('name' => 'metric1', 'value' => 123)
-  ),
+  )
 ));
 ```
 
