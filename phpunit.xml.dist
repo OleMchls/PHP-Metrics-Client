@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="vendor/.composer/autoload.php"
+		 backupStaticAttributes="false"
+		 bootstrap="vendor/.composer/autoload.php"
 		 colors="true">
 
-    <testsuites>
-        <testsuite name="Metrics Test Suite">
-            <directory suffix="Test.php">./test/Metrics/</directory>
-        </testsuite>
-    </testsuites>
+	<php>
+		<env name="metrics_email" value="user@example.org"/>
+		<env name="metrics_token" value="..."/>
+	</php>
+
+	<testsuites>
+		<testsuite name="Metrics Test Suite">
+			<directory suffix="Test.php">./test/Metrics/</directory>
+		</testsuite>
+	</testsuites>
 
 </phpunit>
