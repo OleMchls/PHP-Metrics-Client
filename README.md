@@ -2,7 +2,7 @@
 
 A PHP Client for sending data to [librato metrics][].
 
-Inspired or ported from node-librato-metrics from @felixge
+Inspired or ported from [node-librato-metrics](https://github.com/holidayextras/node-librato-metrics) from [@felixge](https://twitter.com/felixge)
 
 [librato metrics]: metrics.librato.com
 
