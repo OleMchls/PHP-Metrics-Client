@@ -32,7 +32,6 @@ $client->post('/metrics', array(
 ```
 
 ## ToDo's
-* Add to travis ci
 * Documentation
 
 ## License
