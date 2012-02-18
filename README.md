@@ -25,6 +25,11 @@ $client->post('/metrics', array(
 ));
 ```
 
+## ToDo's
+* Add to composer
+* Add to travis ci
+* Documentation
+
 ## License
 
 Licensed under the MIT license.
