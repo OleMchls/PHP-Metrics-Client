@@ -1,0 +1,23 @@
+{
+    "name": "nesQuick/Metrics",
+    "type": "library",
+    "description": "PHP Client for Librato Metrics APIs.",
+    "keywords": ["Metrics", "API", "Client"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ole 'nesQuick' Michaelis",
+            "email": "ole.michaelis@googlemail.com",
+            "homepage": "http://www.codestars.eu"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Metrics": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.3.2",
+        "kriswallsmith/Buzz": ">=0.5"
+    }
+}

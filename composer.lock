@@ -1,0 +1,9 @@
+{
+    "hash": "8e8bccf0b858d46d36291e3ef23e4fc2",
+    "packages": [
+        {
+            "package": "kriswallsmith/buzz",
+            "version": "master-dev"
+        }
+    ]
+}
