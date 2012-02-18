@@ -8,8 +8,14 @@ Inspired or ported from [node-librato-metrics](https://github.com/holidayextras/
 
 ## Install
 
+Installation should be done via [composer](http://packagist.org/).
+
 ```
-tbd - composer planned
+{
+    "require": {
+        "nesQuick/Metrics": "master-dev"
+    }
+}
 ```
 
 ## Example
@@ -26,7 +32,6 @@ $client->post('/metrics', array(
 ```
 
 ## ToDo's
-* Add to composer
 * Add to travis ci
 * Documentation
 
