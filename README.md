@@ -15,6 +15,8 @@ tbd - composer planned
 ## Example
 
 ```php
+use Metrics\Client;
+
 $client = new Client('user@example.org', '...');
 $client->post('/metrics', array(
   'gauges' => array(
