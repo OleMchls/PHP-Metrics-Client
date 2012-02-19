@@ -41,11 +41,6 @@ class Client {
 		return '/' . self::API_VERSION . $path;
 	}
 
-	protected function buildUri($email, $token, $uri) {
-		$auth = urlencode($email . '@' . $token);
-		return sprintf($uri, $auth);
-	}
-
 	public function get($path) {
 		return $this->request($path, Request::METHOD_GET);
 	}
