@@ -19,7 +19,7 @@ class Client {
 	const URI = 'https://metrics-api.librato.com';
 	const API_VERSION = 'v1';
 
-	function __construct($email, $token) {
+	public function __construct($email, $token) {
 		$this->email = $email;
 		$this->token = $token;
 	}
