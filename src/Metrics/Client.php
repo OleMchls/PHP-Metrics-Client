@@ -7,23 +7,49 @@ use Buzz\Message\Response;
 use Buzz\Client\Curl;
 
 /**
- * Description of Client
+ * Client for sending and recieving data from librato Metrics.
  *
- * @author ole
+ * @author Ole 'nesQuick' Michaelis <Ole.Michaelis@googlemail.com>
  */
 class Client {
 
+	/**
+	 * Stores Metrics mail, needed for auth.
+	 *
+	 * @var string
+	 */
 	protected $email;
+
+	/**
+	 * Stores Metrics token, needed for auth.
+	 *
+	 * @var string
+	 */
 	protected $token;
 
 	const URI = 'https://metrics-api.librato.com';
 	const API_VERSION = 'v1';
 
+	/**
+	 * Sets needed Auth information.
+	 *
+	 * @param string $email
+	 * @param string $token
+	 */
 	public function __construct($email, $token) {
 		$this->email = $email;
 		$this->token = $token;
 	}
 
+	/**
+	 * Helper to send requests to Metrics API.
+	 *
+	 * @param string $path Path after metrics api version.
+	 * @param string $method HTTP Mthod, 'GET' or 'POST'.
+	 * @param array<string,array> $data Metrics data.
+	 *
+	 * @return stdClass
+	 */
 	protected function request($path, $method, array $data = array()) {
 		$request = new Request($method, $this->buildPath($path), self::URI);
 		$response = new Response();
@@ -40,14 +66,36 @@ class Client {
 		return json_decode($response->getContent());
 	}
 
+	/**
+	 * Helper to build path on Metrics API.
+	 *
+	 * @param string $path
+	 *
+	 * @return string
+	 */
 	protected function buildPath($path) {
 		return '/' . self::API_VERSION . $path;
 	}
 
+	/**
+	 * Fetches data from Metrics API.
+	 *
+	 * @param string $path Path on Metrics API to request. For Example '/metrics/'.
+	 *
+	 * @return stdClass
+	 */
 	public function get($path) {
 		return $this->request($path, Request::METHOD_GET);
 	}
 
+	/**
+	 * Posts data to Metrics.
+	 *
+	 * @param string $path Path on Metrics API to request. For Example '/metrics'.
+	 * @param array<string,array> $data
+	 *
+	 * @return stdClass
+	 */
 	public function post($path, array $data) {
 		return $this->request($path, Request::METHOD_POST, $data);
 	}

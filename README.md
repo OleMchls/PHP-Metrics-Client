@@ -33,7 +33,6 @@ $client->post('/metrics', array(
 ```
 
 ## ToDo's
-* Documentation
 
 ## License
 
