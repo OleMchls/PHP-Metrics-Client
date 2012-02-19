@@ -26,12 +26,15 @@ class Client {
 
 	protected function request($path, $method, array $data = array()) {
 		$request = new Request($method, $this->buildPath($path), self::URI);
-		$request->addHeader('Authorization: Basic '.base64_encode($this->email . ':' . $this->token));
-		$request->addHeader('Content-Type: application/json');
-		$request->setContent(json_encode($data));
 		$response = new Response();
-
 		$client = new Curl();
+
+		$request->addHeader('Authorization: Basic ' . base64_encode($this->email . ':' . $this->token));
+		if (count($data)) {
+			$request->addHeader('Content-Type: application/json');
+			$request->setContent(json_encode($data));
+		}
+
 		$client->send($request, $response);
 
 		return json_decode($response->getContent());
