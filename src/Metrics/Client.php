@@ -51,10 +51,13 @@ class Client {
 	 * @return stdClass
 	 */
 	protected function request($path, $method, array $data = array()) {
-		$request = new Request($method, $this->buildPath($path), self::URI);
+		$request = new Request();
 		$response = new Response();
 		$client = new Curl();
 
+		$request->setMethod($method);
+		$request->setResource($this->buildPath($path));
+		$request->setHost(self::URI);
 		$request->addHeader('Authorization: Basic ' . base64_encode($this->email . ':' . $this->token));
 		$request->addHeader('User-Agent: ' . $this->getUserAgent());
 
