@@ -56,6 +56,8 @@ class Client {
 		$client = new Curl();
 
 		$request->addHeader('Authorization: Basic ' . base64_encode($this->email . ':' . $this->token));
+		$request->addHeader('User-Agent: ' . $this->getUserAgent());
+
 		if (count($data)) {
 			$request->addHeader('Content-Type: application/json');
 			$request->setContent(json_encode($data));
@@ -75,6 +77,15 @@ class Client {
 	 */
 	protected function buildPath($path) {
 		return '/' . self::API_VERSION . $path;
+	}
+
+	/**
+	 * Returns user agent to identify libary.
+	 *
+	 * @return sting
+	 */
+	protected function getUserAgent() {
+		return sprintf("librato-metrics/%s (PHP %s)", self::API_VERSION, PHP_VERSION);
 	}
 
 	/**
