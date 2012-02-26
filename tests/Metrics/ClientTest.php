@@ -42,6 +42,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider gaugesProvider
 	 */
 	public function testPostingDataT0Metrics($metrics) {
+		if ($_ENV['metrics_token'] == '...') {
+			$this->markTestSkipped('No valid auth credentials provided');
+		}
 		$client = $this->buildClient();
 		$response = $client->post('/metrics', $metrics);
 		$this->assertNull($response);
@@ -51,6 +54,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider gaugesProvider
 	 */
 	public function testGettingDataFromMetrics($metrics) {
+		if ($_ENV['metrics_token'] == '...') {
+			$this->markTestSkipped('No valid auth credentials provided');
+		}
 		$client = $this->buildClient();
 		$client->post('/metrics', $metrics);
 		$metric = $metrics['gauges'][0];
