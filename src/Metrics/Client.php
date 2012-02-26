@@ -27,6 +27,13 @@ class Client {
 	 */
 	protected $token;
 
+	/**
+	 * Stores http client/transport.
+	 *
+	 * @var Buzz\Client\AbstractClient
+	 */
+	protected $transport = null;
+
 	const URI = 'https://metrics-api.librato.com';
 	const API_VERSION = 'v1';
 
@@ -53,12 +60,12 @@ class Client {
 	protected function request($path, $method, array $data = array()) {
 		$request = new Request();
 		$response = new Response();
-		$client = new Curl();
+		$transport = $this->getTransport();
 
 		$request->setMethod($method);
 		$request->setResource($this->buildPath($path));
 		$request->setHost(self::URI);
-		$request->addHeader('Authorization: Basic ' . base64_encode($this->email . ':' . $this->token));
+		$request->addHeader('Authorization: Basic ' . base64_encode($this->getAuthCredentials()));
 		$request->addHeader('User-Agent: ' . $this->getUserAgent());
 
 		if (count($data)) {
@@ -66,9 +73,32 @@ class Client {
 			$request->setContent(json_encode($data));
 		}
 
-		$client->send($request, $response);
+		$transport->send($request, $response);
 
 		return json_decode($response->getContent());
+	}
+
+	/**
+	 * Gets the transport/client.
+	 *
+	 * @return Buzz\Client\AbstractClient
+	 */
+	protected function getTransport() {
+		if ($this->transport === null) {
+			$this->transport = new Curl();
+		}
+		return $this->transport;
+	}
+
+	/**
+	 * Sets the transport/client for sending the request to metrics.
+	 *
+	 * @param Buzz\Client\AbstractClient $transport
+	 *
+	 * @return void
+	 */
+	public function setTransport(\Buzz\Client\ClientInterface $transport) {
+		$this->transport = $transport;
 	}
 
 	/**
@@ -89,6 +119,15 @@ class Client {
 	 */
 	protected function getUserAgent() {
 		return sprintf("librato-metrics/%s (PHP %s)", self::API_VERSION, PHP_VERSION);
+	}
+
+	/**
+	 * Constructs auth credentials.
+	 *
+	 * @return string
+	 */
+	protected function getAuthCredentials() {
+		return ($this->email . ':' . $this->token);
 	}
 
 	/**
