@@ -1,9 +1,11 @@
 {
-    "hash": "e827f87257312810efe1c9b959b568ca",
+    "hash": "5f2745ecc4eb4dc33136b490ca6c94ba",
     "packages": [
         {
             "package": "kriswallsmith/buzz",
-            "version": "master-dev"
+            "version": "master-dev",
+            "source-reference": "424187ec75eccf015296349be43980a95630ac9a"
         }
-    ]
+    ],
+    "aliases": []
 }
