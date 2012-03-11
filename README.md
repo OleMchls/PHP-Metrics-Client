@@ -14,7 +14,7 @@ Installation should be done via [composer](http://packagist.org/).
 ```
 {
     "require": {
-        "nesQuick/Metrics": "master-dev"
+        "nesQuick/Metrics": "dev-master"
     }
 }
 ```
