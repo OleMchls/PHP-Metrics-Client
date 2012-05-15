@@ -67,7 +67,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 		$getUserAgent = new ReflectionMethod('\Metrics\Client', 'getUserAgent');
 		$getUserAgent->setAccessible(true);
 
-		$this->assertEquals('librato-metrics/v1 (PHP ' . PHP_VERSION . ')', $getUserAgent->invoke($this->buildClient()));
+		$this->assertEquals('php-librato-metrics-v01', $getUserAgent->invoke($this->buildClient()));
 	}
 
 	public function testGetAuthCredentials() {

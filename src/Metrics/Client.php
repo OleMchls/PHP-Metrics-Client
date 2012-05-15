@@ -118,7 +118,7 @@ class Client {
 	 * @return sting
 	 */
 	protected function getUserAgent() {
-		return sprintf("php-librato-metrics");
+		return sprintf("php-librato-metrics-v01");
 	}
 
 	/**
