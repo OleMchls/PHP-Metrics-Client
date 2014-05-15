@@ -153,4 +153,27 @@ class Client {
 		return $this->request($path, Request::METHOD_POST, $data);
 	}
 
+        /**
+         *  Put data to Metrics.*
+	 *
+	 * @param string $path Path on Metrics API to request. For Example '/metrics'.
+	 * @param array<string,array> $data
+	 *
+	 * @return stdClass
+	 */
+        public function put($path, array $data) {
+                return $this->request($path, Request::METHOD_PUT, $data);
+        }
+        
+        /**
+         *  Delete data from Metrics.*
+	 *
+	 * @param string $path Path on Metrics API to request. For Example '/metrics'.
+	 * @param array<string,array> $data
+	 *
+	 * @return stdClass
+	 */
+        public function delete($path, array $data) {
+                return $this->request($path, Request::METHOD_DELETE, $data);
+        }
 }
