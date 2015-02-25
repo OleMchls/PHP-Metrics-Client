@@ -9,14 +9,10 @@ Inspired or ported from [node-librato-metrics](https://github.com/holidayextras/
 
 ## Install
 
-Installation should be done via [composer](http://packagist.org/).
+Installation should be done via [Composer](http://packagist.org/).
 
-```
-{
-    "require": {
-        "nesQuick/Metrics": "dev-master"
-    }
-}
+```bash
+$ composer require nesQuick/Metrics
 ```
 
 ## Example
